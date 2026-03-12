@@ -1,4 +1,4 @@
-# Visual-ERM: Reward Modeling for Visual Equivalence
+<h1 align="center">Visual-ERM: Reward Modeling for Visual Equivalence</h1>
 
 <p align="center">
   <a href="[TODO: arXiv link]">📄 Paper</a> |
