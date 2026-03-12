@@ -5,9 +5,9 @@
 
 <p align="center">
   <a href="[TODO: arXiv link]">📄 Paper</a> |
-  <a href="[TODO: Hugging Face model link]">🤗 Models</a> |
-  <a href="[TODO: dataset link]">📦 Data</a> |
-  <a href="[TODO: benchmark link]">📊 VC-RewardBench</a>
+  <a href="https://huggingface.co/internlm/Visual-ERM">🤗 Models</a> |
+  <!-- <a href="[TODO: dataset link]">📦 Data</a> | -->
+  <a href="https://huggingface.co/internlm/VC-RewardBench">📊 VC-RewardBench</a>
 </p>
 
 🌈 Official repository for **Visual-ERM**, a multimodal generative reward model for **vision-to-code** tasks.  
@@ -15,8 +15,8 @@ Visual-ERM evaluates outputs directly in the **rendered visual space** and provi
 
 ## 📢 News
 
-- 🚀 **[2026/03/15]** Release of VisualCritic-RewardBench.
-- 🚀 **[2026/03/14]** Release of pretrained Visual-ERM checkpoints.
+- 🚀 **[2026/03/15]** Release of <a href="https://huggingface.co/internlm/VC-RewardBench">📊 VisualCritic-RewardBench</a>.
+- 🚀 **[2026/03/14]** Release of pretrained Visual-ERM <a href="https://huggingface.co/internlm/Visual-ERM">🤗 checkpoints</a>.
 - 🚀 **[2026/03/13]** Initial release of Visual-ERM codebase.
 
 ## 💡 Highlights
