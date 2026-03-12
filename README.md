@@ -7,7 +7,7 @@
   <a href="[TODO: arXiv link]">📄 Paper</a> |
   <a href="https://huggingface.co/internlm/Visual-ERM">🤗 Models</a> |
   <!-- <a href="[TODO: dataset link]">📦 Data</a> | -->
-  <a href="https://huggingface.co/internlm/VC-RewardBench">📊 VC-RewardBench</a>
+  <a href="https://huggingface.co/datasets/internlm/VC-RewardBench">📊 VC-RewardBench</a>
 </p>
 
 🌈 Official repository for **Visual-ERM**, a multimodal generative reward model for **vision-to-code** tasks.  
@@ -15,7 +15,7 @@ Visual-ERM evaluates outputs directly in the **rendered visual space** and provi
 
 ## 📢 News
 
-- 🚀 **[2026/03/15]** Release of <a href="https://huggingface.co/internlm/VC-RewardBench">📊 VisualCritic-RewardBench</a>.
+- 🚀 **[2026/03/15]** Release of <a href="https://huggingface.co/datasets/internlm/VC-RewardBench">📊 VisualCritic-RewardBench</a>.
 - 🚀 **[2026/03/14]** Release of pretrained Visual-ERM <a href="https://huggingface.co/internlm/Visual-ERM">🤗 checkpoints</a>.
 - 🚀 **[2026/03/13]** Initial release of Visual-ERM codebase.
 
@@ -119,7 +119,7 @@ RL training data can be freely organized following the veRL data format. Taking 
 
 ### 3. Evaluation on VisualCritic-RewardBench
 
-First, download the VC-RewardBench data from <a href="https://huggingface.co/internlm/VC-RewardBench">📊 Hugging Face</a>. Then use `./evaluation/api_judge.py` to generate model responses (this serves as an example of API-based inference). After inference, the output JSONL will contain two additional fields: `pred_json` and `error_parse_failed_reason`. Finally, run `./evaluation/evaluation.py` to produce a JSON file with the evaluation results.
+First, download the VC-RewardBench data from <a href="https://huggingface.co/datasets/internlm/VC-RewardBench">📊 Hugging Face</a>. Then use `./evaluation/api_judge.py` to generate model responses (this serves as an example of API-based inference). After inference, the output JSONL will contain two additional fields: `pred_json` and `error_parse_failed_reason`. Finally, run `./evaluation/evaluation.py` to produce a JSON file with the evaluation results.
 
 > Note: You need to specify the API key and model type in the Python files, and update the corresponding benchmark JSONL file path accordingly.
 
