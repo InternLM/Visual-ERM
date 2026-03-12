@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="assets/logo.jpg" width="85%">
+</p>
 <h1 align="center">Visual-ERM: Reward Modeling for Visual Equivalence</h1>
 
 <p align="center">
@@ -44,7 +47,7 @@ To address this, we propose **Visual Equivalence Reward Model (Visual-ERM)**, a 
 and then outputs fine-grained discrepancy annotations that can be converted into reward signals or used for reflection-based refinement.
 
 <p align="center">
-  <img src="assets/teaser" width="95%">
+  <img src="assets/teaser.jpg" width="85%">
 </p>
 
 ## Framework
@@ -69,7 +72,7 @@ Visual-ERM consists of three major components:
    - as a **visual critic** for iterative reflection and revision during inference.
 
 <p align="center">
-  <img src="assets/framework.jpg" width="95%">
+  <img src="assets/framework.jpg" width="85%">
 </p>
 
 ## Main Results
@@ -91,7 +94,7 @@ On **VC-RewardBench**, Visual-ERM substantially improves over the base model on 
 We introduce **VisualCritic-RewardBench (VC-RewardBench)**, a benchmark for evaluating fine-grained image-to-image discrepancy judgment on structured visual data.
 
 <p align="center">
-  <img src="assets/vc-bench.jpg" width="95%">
+  <img src="assets/vc-bench.jpg" width="85%">
 </p>
 
 ### Benchmark Features
@@ -207,12 +210,7 @@ It is particularly useful when:
 If you find this work useful, please consider citing:
 
 ```bibtex
-@article{liu2026visualerm,
-  title   = {Visual-ERM: Reward Modeling for Visual Equivalence},
-  author  = {Ziyu Liu and Shengyuan Ding and Xinyu Fang and Xuanlang Dai and Penghui Yang and Jianze Liang and Jiaqi Wang and Kai Chen and Dahua Lin and Yuhang Zang},
-  journal = {arXiv preprint arXiv:[TODO]},
-  year    = {2026}
-}
+TBD
 ```
 
 ---
