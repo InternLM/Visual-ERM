@@ -32,64 +32,44 @@ Visual-ERM evaluates outputs directly in the **rendered visual space** and provi
 
 - 🔥 **A new benchmark for visual discrepancy judgment.** We introduce **VC-RewardBench**, a benchmark for fine-grained image-to-image discrepancy evaluation on structured visual data.
 
-## Overview
+## 👀 Overview
 
-Vision-to-code tasks require models to reconstruct structured visual inputs into executable or structured representations with high visual fidelity. However, existing reward designs have major limitations:
+Vision-to-code tasks require models to reconstruct structured visual inputs into executable or structured representations with high visual fidelity. However, existing reward designs have major limitations: **(1) Text-based rewards** (e.g., edit distance, TEDS) ignore important visual cues such as layout, alignment, spacing, and style. **(2) Vision embedding rewards** (e.g., DINO similarity) are often coarse-grained, semantically biased, and vulnerable to reward hacking.
 
-- **Text-based rewards** (e.g., edit distance, TEDS) ignore important visual cues such as layout, alignment, spacing, and style.
-- **Vision embedding rewards** (e.g., DINO similarity) are often coarse-grained, semantically biased, and vulnerable to reward hacking.
-
-To address this, we propose **Visual Equivalence Reward Model (Visual-ERM)**, a multimodal generative reward model that compares:
-
-- the **ground-truth image**, and
-- the **rendered image** from a model prediction,
-
-and then outputs fine-grained discrepancy annotations that can be converted into reward signals or used for reflection-based refinement.
+To address this, we propose **Visual Equivalence Reward Model (Visual-ERM)**, a multimodal generative reward model that compares the **ground-truth image** and the **rendered image** from a model prediction, and then outputs fine-grained discrepancy annotations that can be converted into reward signals or used for reflection-based refinement.
 
 <p align="center">
   <img src="assets/teaser.jpg" width="85%">
 </p>
 
-## Framework
+## 🔬 Framework
 
 Visual-ERM consists of three major components:
 
 1. **Reward data generation**  
-   We construct image pairs by:
-   - editing ground-truth structured outputs to inject controlled errors, and
-   - sampling natural errors from weaker model predictions.
+   We construct image pairs by: (1) editing ground-truth structured outputs to inject controlled errors, and (2) sampling natural errors from weaker model predictions.
 
 2. **Fine-grained discrepancy annotation**  
-   Each image pair is annotated with structured visual discrepancies, including:
-   - category
-   - severity
-   - location
-   - description
+   Each image pair is annotated with structured visual discrepancies, including: category, severity, location and description
 
 3. **Integration into RL and test-time scaling**  
-   Visual-ERM can be used:
-   - as a **reward model** for GRPO-based RL, and
-   - as a **visual critic** for iterative reflection and revision during inference.
+   Visual-ERM can be used: (1) as a **reward model** for GRPO-based RL, and (2) as a **visual critic** for iterative reflection and revision during inference.
 
 <p align="center">
   <img src="assets/framework.jpg" width="85%">
 </p>
 
-## Main Results
+## 📋 Main Results
 
-Visual-ERM consistently improves vision-to-code performance across multiple tasks.
-
-### Reinforcement Learning
+**Reinforcement Learning.** Visual-ERM consistently improves vision-to-code performance across multiple tasks by providing feedback signals as a reward model during RL.
 
 - **Chart-to-Code**: improves **Qwen3-VL-8B-Instruct** by **+8.4** on average.
 - **Table-to-Markdown**: yields **+2.7** average improvement.
 - **SVG-to-Code**: yields **+4.1** average improvement.
 
-### Visual Critic Benchmark
+**Visual Critic Benchmark:** On **VC-RewardBench**, Visual-ERM substantially improves over the base model on fine-grained discrepancy judgment and outperforms **Qwen3-VL-235B-Instruct** as an open-source judge.
 
-On **VC-RewardBench**, Visual-ERM substantially improves over the base model on fine-grained discrepancy judgment and outperforms **Qwen3-VL-235B-Instruct** as an open-source judge.
-
-## VC-RewardBench
+## 📍 VC-RewardBench
 
 We introduce **VisualCritic-RewardBench (VC-RewardBench)**, a benchmark for evaluating fine-grained image-to-image discrepancy judgment on structured visual data.
 
@@ -106,7 +86,7 @@ We introduce **VisualCritic-RewardBench (VC-RewardBench)**, a benchmark for eval
   - a corrupted / rendered counterpart
   - fine-grained discrepancy annotations
 
-## Quick Start
+## 🔓 Quick Start
 
 ### 1. Reward Inference
 
@@ -162,41 +142,7 @@ python [TODO: path/to/reflect_and_revise.py] \
     --num_rounds 3
 ```
 
-## Data
-
-### Reward Modeling Data
-
-Visual-ERM is trained on reward data spanning three vision-to-code domains:
-
-- **Chart-to-Code**
-- **Table-to-Markdown**
-- **SVG-to-Code**
-
-> **TODO:** Add download links, license notes, and data release policy.
-
-### VC-RewardBench
-
-> **TODO:** Add benchmark download link and evaluation instructions.
-
-## Evaluation
-
-### Supported Tasks
-
-- Chart-to-Code
-- Table-to-Markdown
-- SVG-to-Code
-- Fine-grained discrepancy judgment on VC-RewardBench
-
-### Example Evaluation
-
-```bash
-python [TODO: path/to/eval.py] \
-    --model_path [TODO: checkpoint] \
-    --task [chart|table|svg|vc_rewardbench] \
-    --config [TODO: configs/eval.yaml]
-```
-
-## Why Visual-ERM?
+## ❓ Why Visual-ERM?
 
 Visual-ERM is designed for settings where **visual equivalence matters more than textual similarity**.
 
