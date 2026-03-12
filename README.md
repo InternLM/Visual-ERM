@@ -89,57 +89,39 @@ We introduce **VisualCritic-RewardBench (VC-RewardBench)**, a benchmark for eval
 
 ### 1. Reward Inference
 
-Use Visual-ERM to compare a reference image and a rendered prediction:
+Use Visual-ERM to compare a reference image and a rendered prediction. First, download the model weights from Hugging Face:
+
+- 🤗 [Visual-ERM Model Weights](https://huggingface.co/internlm/Visual-ERM)
+
+Visual-ERM is fine-tuned from [Qwen3-VL-8B-Instruct](https://huggingface.co/Qwen/Qwen3-VL-8B-Instruct), so the usage is fully compatible with Qwen3-VL-8B-Instruct. Please refer to the supplementary materials of our paper for prompt templates.
+
+### 2. RL with Visual-ERM
+
+We use [veRL](https://github.com/volcengine/verl) as the RL training framework. Before starting RL training, launch a reward model (Visual-ERM) service via vLLM:
 
 ```bash
-python [TODO: path/to/infer_reward.py] \
-    --ref_image [TODO: reference image path] \
-    --pred_image [TODO: rendered image path] \
-    --model_path [TODO: visual-erm checkpoint]
+CUDA_VISIBLE_DEVICES=0,1,2,3 vllm serve "$MODEL_PATH" \
+  --tensor-parallel-size 4 \
+  --served-model-name $SERVE_NAME \
+  --port $PORT \
+  --max-num-seqs $N_PROC
 ```
 
-Expected output format:
+> You may need to launch multiple vLLM services to speed up reward computation. vLLM service can be set in reward functions as show in `rl_scripts/reward_func/table_parse_rm_v2.py`.
 
-```json
-{
-  "score": 0.84,
-  "errors": [
-    {
-      "category": "text_error",
-      "severity": 2,
-      "location": "y-axis label",
-      "description": "The label text differs from the reference image."
-    }
-  ]
-}
-```
-
-### 2. Train Visual-ERM
+Then start RL training with the following script:
 
 ```bash
-python [TODO: path/to/train_reward_model.py] \
-    --config [TODO: configs/train_visual_erm.yaml]
+bash ./rl_scripts/run_qwen3vl_table_40k_rm_32gpus.sh
 ```
 
-### 3. RL with Visual-ERM
+RL training data can be freely organized following the veRL data format. Taking the **table-to-markdown** task as an example, the training data contains table images (no parsed markdown is needed). During training, the reward function renders the markdown parsed by the policy model back into an image, then feeds both the rendered image and the ground-truth image into Visual-ERM to produce a reward score (see the framework figure above). An example reward function is provided at `rl_scripts/reward_func/table_parse_rm_v2.py`.
 
-```bash
-python [TODO: path/to/train_rl.py] \
-    --policy_model [TODO: policy checkpoint] \
-    --reward_model [TODO: visual-erm checkpoint] \
-    --task [chart|table|svg] \
-    --config [TODO: configs/rl.yaml]
-```
+### 3. Evaluation on VisualCritic-RewardBench
 
-### 4. Test-Time Scaling with Reflection
+First, download the VC-RewardBench data from <a href="https://huggingface.co/internlm/VC-RewardBench">📊 Hugging Face</a>. Then use `./evaluation/api_judge.py` to generate model responses (this serves as an example of API-based inference). After inference, the output JSONL will contain two additional fields: `pred_json` and `error_parse_failed_reason`. Finally, run `./evaluation/evaluation.py` to produce a JSON file with the evaluation results.
 
-```bash
-python [TODO: path/to/reflect_and_revise.py] \
-    --policy_model [TODO: policy checkpoint] \
-    --critic_model [TODO: visual-erm checkpoint] \
-    --input [TODO: input file or dataset] \
-    --num_rounds 3
-```
+> Note: You need to specify the API key and model type in the Python files, and update the corresponding benchmark JSONL file path accordingly.
 
 ## ❓ Why Visual-ERM?
 
