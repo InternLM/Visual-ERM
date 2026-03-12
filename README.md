@@ -5,7 +5,6 @@
 
 <p align="center">
   <a href="[TODO: arXiv link]">📄 Paper</a> |
-  <a href="[TODO: project page link]">🌐 Project Page</a> |
   <a href="[TODO: Hugging Face model link]">🤗 Models</a> |
   <a href="[TODO: dataset link]">📦 Data</a> |
   <a href="[TODO: benchmark link]">📊 VC-RewardBench</a>
