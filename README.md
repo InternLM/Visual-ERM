@@ -15,7 +15,7 @@ Visual-ERM evaluates outputs directly in the **rendered visual space** and provi
 
 ## 📢 News
 
-- 🚀 **[2026/03/15]** Release of Visual-ERM training data and VC-RewardBench.
+- 🚀 **[2026/03/15]** Release of VisualCritic-RewardBench.
 - 🚀 **[2026/03/14]** Release of pretrained Visual-ERM checkpoints.
 - 🚀 **[2026/03/13]** Initial release of Visual-ERM codebase.
 
