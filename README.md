@@ -4,7 +4,7 @@
 <h1 align="center">Visual-ERM: Reward Modeling for Visual Equivalence</h1>
 
 <p align="center">
-  <a href="[TODO: arXiv link]">📄 Paper</a> |
+  <a href="https://arxiv.org/abs/2603.13224">📄 Paper</a> |
   <a href="https://huggingface.co/internlm/Visual-ERM">🤗 Models</a> |
   <!-- <a href="[TODO: dataset link]">📦 Data</a> | -->
   <a href="https://huggingface.co/datasets/internlm/VC-RewardBench">📊 VC-RewardBench</a>
