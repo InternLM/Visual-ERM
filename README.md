@@ -137,7 +137,12 @@ It is particularly useful when:
 If you find this work useful, please consider citing:
 
 ```bibtex
-TBD
+@article{liu2026visual,
+  title={Visual-ERM: Reward Modeling for Visual Equivalence},
+  author={Liu, Ziyu and Ding, Shengyuan and Fang, Xinyu and Dai, Xuanlang and Yang, Penghui and Liang, Jianze and Wang, Jiaqi and Chen, Kai and Lin, Dahua and Zang, Yuhang},
+  journal={arXiv preprint arXiv:2603.13224},
+  year={2026}
+}
 ```
 
 ---
